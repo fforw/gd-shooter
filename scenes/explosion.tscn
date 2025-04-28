@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ciemlh63ahhxt"]
 
-[ext_resource type="Script" uid="uid://dj1ncksv0f7wu" path="res://explosion.gd" id="1_vxas0"]
+[ext_resource type="Script" uid="uid://dj1ncksv0f7wu" path="res://scripts/explosion.gd" id="1_vxas0"]
 [ext_resource type="AudioStream" uid="uid://dmuexg7xe30os" path="res://assets/rumble3.ogg" id="2_j4sxf"]
 [ext_resource type="Texture2D" uid="uid://yte0ijcayj82" path="res://assets/gas00.png" id="2_m5xho"]
 

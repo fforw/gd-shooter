@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4r8qcr3k3ye6"]
 
-[ext_resource type="Script" uid="uid://cggfewvmkkkq5" path="res://enemy_swarm.gd" id="1_cevnf"]
+[ext_resource type="Script" uid="uid://cggfewvmkkkq5" path="res://scripts/enemy_swarm.gd" id="1_cevnf"]
 [ext_resource type="Texture2D" uid="uid://dvikmfqvrkd56" path="res://assets/sheet.png" id="2_jx3qf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_su2v0"]
