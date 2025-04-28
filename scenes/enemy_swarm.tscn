@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4r8qcr3k3ye6"]
+
+[ext_resource type="Script" uid="uid://cggfewvmkkkq5" path="res://enemy_swarm.gd" id="1_cevnf"]
+[ext_resource type="Texture2D" uid="uid://dvikmfqvrkd56" path="res://assets/sheet.png" id="2_jx3qf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su2v0"]
+atlas = ExtResource("2_jx3qf")
+region = Rect2(627.709, 680.292, 25.5073, 25.3438)
+
+[node name="EnemySwarm" type="Node2D"]
+script = ExtResource("1_cevnf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_su2v0")
