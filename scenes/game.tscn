@@ -1,11 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://3kpfxi7w4gcd"]
 
+[ext_resource type="Script" uid="uid://63vwlx1rnv3a" path="res://scenes/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://de3ygfx0cx0kd" path="res://scenes/player-ship.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://d2wtr2itw02ys" path="res://scenes/barrier.tscn" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://jrer1bv17tkp" path="res://scenes/enemy.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cljovt4rh2hhi" path="res://scenes/score_board.tscn" id="4_lbhrr"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_iywne")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(0, 820)
@@ -26,6 +27,3 @@ offset_top = -948.0
 offset_right = -489.0
 offset_bottom = -925.0
 scale = Vector2(2, 2)
-
-[node name="Enemy" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(165, -161)

@@ -11,4 +11,5 @@ region = Rect2(627.709, 680.292, 25.5073, 25.3438)
 script = ExtResource("1_cevnf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = SubResource("AtlasTexture_su2v0")

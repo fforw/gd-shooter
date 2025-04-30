@@ -17,7 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+RNG="*res://scripts/rng.gd"
 Global="*res://scripts/global.gd"
+Signals="*res://scripts/signals.gd"
 
 [display]
 

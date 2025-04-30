@@ -1,38 +1,54 @@
+class_name EnemySwarm
 extends Node2D
 
 const Enemy = preload("res://scenes/enemy.tscn")
 
-const MAX_LIFE = 12
-
 @export var count : int = 3
+@export var curve_pos : float = 0
 @export var start_point : Vector2 = Vector2(0,0)
 @export var end_point : Vector2 = Vector2(0,0)
 @export var target_point : Vector2 = Vector2(0,0)
-@export var life_time : float = MAX_LIFE
 
-func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
-	var q0 = p0.lerp(p1, t)
-	var q1 = p1.lerp(p2, t)
-	var r = q0.lerp(q1, t)
-	return r
+var curve: Bezier
+var enemies : Array[Enemy]
+var done : bool = false
 
 func _ready() -> void:
-	position.y = -get_viewport().size.y
-	pass
-		
+
+    # setup curve
+    curve = Bezier.new()
+    curve.p0 = start_point
+    curve.p1 = target_point
+    curve.p2 = end_point
+    curve_pos = 0
+
+    var step = (2 * PI) / count
+    var angle = 0
+    
+    
+    for i in range(count):    
+        #print("CREATE ENEMY: %s, %s" % [i, angle])
+
+        var enemy : Enemy = Enemy.instantiate()
+        enemy.offset = Vector2(cos(angle) * 75, sin(angle) * 75)    
+        enemy.position = position + enemy.offset
+        enemy.id = i
+        enemy.swarm = self
+        Global.game.add_child(enemy)
+
+        enemies.append(enemy)
+        angle += step
+
+    
 func _process(delta: float) -> void:
-	life_time -= delta
-	if life_time < 0:
-		print("wave done")
-		Global.trigger_wave()
-		queue_free()
-		return
-	
-	var t = (MAX_LIFE - life_time) / MAX_LIFE		
-	
-	position = _quadratic_bezier(
-		start_point,
-		target_point,
-		end_point,
-		t
-	)
+
+    position = curve.point_at(curve_pos)
+    curve_pos = curve.walk(curve_pos, 250 * delta)
+    if curve_pos >= 1:
+        print("wave done")
+        Global.trigger_wave()
+        queue_free()
+        for e in enemies:
+            if e:
+                e.queue_free()
+        done = true

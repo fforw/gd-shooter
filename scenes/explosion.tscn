@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://ciemlh63ahhxt"]
 
-[ext_resource type="Script" uid="uid://dj1ncksv0f7wu" path="res://scripts/explosion.gd" id="1_vxas0"]
-[ext_resource type="AudioStream" uid="uid://dmuexg7xe30os" path="res://assets/rumble3.ogg" id="2_j4sxf"]
-[ext_resource type="Texture2D" uid="uid://yte0ijcayj82" path="res://assets/gas00.png" id="2_m5xho"]
+[ext_resource type="Script" uid="uid://dj1ncksv0f7wu" path="res://scripts/explosion.gd" id="1_aw4cw"]
+[ext_resource type="Texture2D" uid="uid://yte0ijcayj82" path="res://assets/gas00.png" id="2_3el85"]
+[ext_resource type="AudioStream" uid="uid://dmuexg7xe30os" path="res://assets/rumble3.ogg" id="3_hbmxj"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l04k4"]
 lifetime_randomness = 0.5
 particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 50.35
-radial_velocity_min = 16.0
-radial_velocity_max = 16.0
+radial_velocity_min = 7.99998
+radial_velocity_max = 12.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.15
 scale_max = 0.2
@@ -18,13 +18,15 @@ hue_variation_min = -2.23517e-08
 hue_variation_max = -2.23517e-08
 
 [node name="Explosion" type="Node2D"]
-script = ExtResource("1_vxas0")
+script = ExtResource("1_aw4cw")
 
 [node name="ExplosionParticles" type="GPUParticles2D" parent="."]
 emitting = false
-texture = ExtResource("2_m5xho")
+texture = ExtResource("2_3el85")
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_l04k4")
 
 [node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_j4sxf")
+stream = ExtResource("3_hbmxj")
+
+[connection signal="finished" from="ExplosionSound" to="." method="_on_explosion_sound_finished"]
